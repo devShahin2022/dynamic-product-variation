@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Product variation setup</title>
+        <!-- Font Awesome -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+        />
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+        />
+        <!-- MDB -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./css/main.css">
+      </head>
+<body>
+    <!-- take a variation name -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="text-center p-2">Write your variation name</h1>
+                <form class="w-100 m-auto mt-5">
+                    <!-- variation name -->
+                    <div class="form-outline mb-4">
+                      <input type="text" id="inp-varia-name" class="form-control" />
+                      <label class="form-label" for="inp-varia-name">Variation name</label>
+                    </div>
+                     <!-- Variation value -->
+                     <div class="form-outline mb-4">
+                        <input type="email" id="inp-varia-name-property" class="form-control" />
+                        <label class="form-label" for="inp-varia-name-property">Varitaion value</label>
+                      </div>
+                    <!-- 2 column grid layout for inline styling -->
+                    <!-- Submit button -->
+                    <button id="add-variation-btn" type="button" class="btn btn-primary btn-block">Add variation Name</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3 class="p-2 bg-dark my-4">All variation setup</h3>
+                <div id="selectPushField" class="d-flex justify-content-between">
+
+                </div>
+                <form class="w-100 m-auto mt-5">
+                    <!-- variation name -->
+                    <div class="row px-3">
+                        <div class="col-6 form-outline mb-4">
+                            <input type="text" id="form1Example1" class="form-control input-regular-price" />
+                            <label class="form-label" for="form1Example1">Regular Price</label>
+                        </div>
+                        <div class="col-6 form-outline mb-4">
+                            <input type="text" id="form1Example1" class="form-control input-sell-price" />
+                            <label class="form-label" for="form1Example1">Sell Price</label>
+                        </div>
+                           <!-- Variation value -->
+                        <div class="col-6 form-outline mb-4">
+                            <input type="email" id="form1Example2" class="form-control stock-manage" />
+                            <label class="form-label" for="form1Example2">Stock</label>
+                        </div>
+                        <div class="col-6 form-outline mb-4">
+                            <input type="email" id="form1Example2" class="form-control input-thumnail-link" />
+                            <label class="form-label" for="form1Example2">Thumnail link</label>
+                        </div>
+                        <div class="col-6 form-outline mb-4">
+                            <input type="email" id="form1Example2" class="form-control btn-img-link" />
+                            <label class="form-label" for="form1Example2">Btn img link</label>
+                        </div>
+                    </div>
+                    <!-- Submit button -->
+                    <button id="add-variation-prop-btn" onclick="getOptionProp()" type="button" class="btn btn-danger btn-block my-3">Add variation</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div col="12">
+                <!-- data table  -->
+                <h3 class="text-center bg-dark my-1 p-2">Your all pevious setup</h3>
+                <table class="table w-100 m-auto mt-2">
+                <thead>
+                    <tr id="all-prev-header-id">
+                        
+                    </tr>
+                </thead>
+                <tbody id="body-item-id">
+                    
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- MDB modal section -->
+    <!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update product variation information</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- dynamically update option -->
+            <div class="cotainer-fluid">
+                <div class="container-fluid">
+                    <div id="update-dyn-option-show" class="row my-3">
+
+                    </div>
+                    <!-- update data -->
+                    <div class="row pb-4">
+                        <div class="col-6 col-md-4 col-lg-3 m-1">
+                            <label class="form-label" for="regular-price">Regular price</label>
+                            <input type="text" id="regular-price" class="form-control btn-img-link" />
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3  m-1">
+                            <label class="form-label" for="sell-price">Sell price</label>
+                            <input type="text" id="sell-price" class="form-control btn-img-link" />
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3  m-1">
+                            <label class="form-label" for="stock">Stock</label>  
+                            <input type="text" id="stock" class="form-control btn-img-link" />
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3  m-1">
+                            <label class="form-label" for="thumnail">Thumnail</label> 
+                            <input type="text" id="thumnail" class="form-control btn-img-link" />  
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3  m-1">
+                            <label class="form-label" for="btn-img">Button image</label>  
+                            <input type="text" id="btn-img" class="form-control btn-img-link" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button onclick="finalUpdateData()" id="selected-ind-id" type="button" class="btn btn-info">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"
+    ></script>
+    <script src="js/practice.js"></script>
+</body>
+</html>
